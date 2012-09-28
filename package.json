@@ -1,0 +1,32 @@
+{
+  "name": "try.luvit.io",
+  "author": "Tim Caswell",
+  "version": "0.0.0",
+  "description": "The node server that powers the luvit repl in the browser",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "jam install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/luvit/try.luvit.io.git"
+  },
+  "dependencies": {
+    "architect": "~0.1.6",
+    "send": "~0.1.0",
+    "pty.js": "~0.1.2",
+    "ws": "~0.4.21",
+    "jamjs": "~0.2.8",
+    "smith": "~0.1.10"
+  },
+  "jam": {
+    "baseUrl": "public",
+    "packageDir": "public/jam",
+    "dependencies": {
+      "architect": "~0.1.6",
+      "tty": "~0.0.1",
+      "smith": "~0.1.10"
+    }
+  },
+  "license": "MIT"
+}
