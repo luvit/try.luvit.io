@@ -9,12 +9,24 @@ module.exports = [
     folders: [ {mount: "/", root: __dirname + "/public" } ]
   },
   {
-    packagePath: "./plugins/smith-transport.js",
-    debug: true,
+    packagePath: "./plugins/smith.js",
+    debug: process.env.DEBUG_SMIT,
     url: "/smith"
   },
   {
     packagePath: "./plugins/tty.js",
-    shell: [""]
+    command: "cgexec",
+    args: ["-g", "cpu,memory:luvit", "rlwrap", "-H", "/dev/null", "/usr/local/bin/luvit"],
+    options: {
+      uid: "luvit",
+      name: "xterm-color",
+      cols: 80,
+      rows: 30,
+      cwd: "/try.luvit.io",
+      env: {
+        HOME: "/try.luvit.io",
+        TERM: "xterm-color"
+      }
+    }
   }
 ];

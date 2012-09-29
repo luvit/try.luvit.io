@@ -17,7 +17,7 @@
     "pty.js": "~0.1.2",
     "ws": "~0.4.21",
     "jamjs": "~0.2.8",
-    "smith": "~0.1.10"
+    "smith": "~0.1.11"
   },
   "jam": {
     "baseUrl": "public",
@@ -25,7 +25,7 @@
     "dependencies": {
       "architect": "~0.1.6",
       "tty": "~0.0.1",
-      "smith": "~0.1.10"
+      "smith": "~0.1.11"
     }
   },
   "license": "MIT"

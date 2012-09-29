@@ -1,30 +1,57 @@
-var spawn = require('pty.js').spawn;
+var spawnPty = require('pty.js').spawn;
 
 module.exports = setup;
 setup.consumes = ["smith"];
-setup.provides = ["tty"];
 
 function setup(config, imports, register) {
   var terminals = [];
 
-  var service = {
-    spawn: function (callback) {
-      // TODO: honor config.shell
-      var term = spawn("bash");
-      var fd = term.fd;
-      terminals[fd] = term;
-      callback(null, {
-        fd: fd,
-        stream: term
-      });
-    },
-    resize: function (fd, width, height) {
-      var terminal = terminals[fd];
-      if (!terminal) return;
-      terminal.resize(width, height);
-    }
-  };
+  var command = config.command;
+  var args = config.args || [];
+  var options = config.options || {};
 
-  register(null, { tty: service });
+  imports.smith.on("setup", function (api) {
+    api.spawn = spawn;
+    api.write = write;
+    api.end = end;
+    api.resize = resize;
+  });
+
+  function spawn(callback) {
+    var remote = this.remoteApi;
+    var term = spawnPty(command, args, options);
+    var fd = term.fd;
+    console.log("Term created ", fd);
+    terminals[fd] = term;
+    term.on('data', function(chunk) {
+      remote.onData(fd, chunk);
+    });
+    term.on('exit', function(code) {
+      console.log("Term exited ", fd, code);
+      delete terminals[fd];
+      remote.onExit(fd, code);
+    });
+    callback(null, fd);
+  }
+
+  function write(fd, chunk) {
+    var terminal = terminals[fd];
+    if (!terminal) return;
+    terminal.write(chunk);
+  }
+
+  function end(fd, chunk) {
+    var terminal = terminals[fd];
+    if (!terminal) return;
+    terminal.end();
+  }
+
+  function resize(fd, width, height) {
+    var terminal = terminals[fd];
+    if (!terminal) return;
+    terminal.resize(width, height);
+  }
+
+  register();
 }
 
