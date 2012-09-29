@@ -7,7 +7,7 @@ define(["tty"], function (tty) {
     var termDiv = document.getElementById("terminal");
     if ((/\bugly\b/).test(window.location.search)) {
       termDiv.style.fontFamily = "Programmer Font";
-      termDiv.style.fontSize = "20pt";
+      termDiv.style.fontSize = "16pt";
     }
 
 
