@@ -4,6 +4,13 @@ define(["tty"], function (tty) {
 
   function setup(config, imports, register) {
 
+    var termDiv = document.getElementById("terminal");
+    if ((/\bugly\b/).test(window.location.search)) {
+      termDiv.style.fontFamily = "Programmer Font";
+      termDiv.style.fontSize = "20pt";
+    }
+
+
     imports.tty.spawn(function (err, terminal) {
       if (err) throw err;
 
@@ -11,7 +18,7 @@ define(["tty"], function (tty) {
       var box = new tty.Terminal(80, 24, function (chunk) {
           terminal.write(chunk);
       });
-      box.open(document.getElementById('terminal'));
+      box.open(termDiv);
       terminal.onData = box.write.bind(box);
       terminal.onExit = function (code) {
         alert("Exited with code " + code);
