@@ -6,7 +6,7 @@ It serves a simple rpc API over binary websockets using msgpack encoded smith me
 
 The rpc API spawns pty sessions on my VPS box running in somewhat sandboxed luvit repls.
 
-<iframe src="http://luvit.io:1337"></iframe>
+<http://luvit.io:1337/>
 
 [architect]: https://github.com/c9/architect
 [smith]: https://github.com/c9/smith
