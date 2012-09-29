@@ -21,6 +21,12 @@ function setup(config, imports, register) {
     var api = {};
     service.emit("setup", api);
     var agent = new Agent(api);
+    agent.on("error", function (err) {
+      if (!err) {
+        err = new Error("unknown");
+      }
+      console.error(err.stack);
+    });
 
     agent.on("connect", function (remote) {
       service.emit("connect", remote);

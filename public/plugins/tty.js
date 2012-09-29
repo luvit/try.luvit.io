@@ -11,7 +11,10 @@ define(function () {
     imports.smith.on("setup", function (api) {
       api.onData = onData;
       api.onExit = onExit;
+      api.life = life;
     });
+
+    function life(callback) {}
 
     function onData(fd, chunk) {
       var terminal = terminals[fd];
@@ -33,6 +36,9 @@ define(function () {
           var terminal = new Terminal(fd, remote);
           terminals[fd] = terminal;
           callback(null, terminal);
+          remote.life(function (err) {
+            onExit(fd, err.code);
+          });
         });
       };
 

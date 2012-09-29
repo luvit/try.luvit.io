@@ -15,13 +15,19 @@ function setup(config, imports, register) {
     api.write = write;
     api.end = end;
     api.resize = resize;
+    api.life = life;
   });
+
+  function life(callback) {}
 
   function spawn(callback) {
     var remote = this.remoteApi;
     var term = spawnPty(command, args, options);
     var fd = term.fd;
     console.log("Term created ", fd);
+    remote.life(function (err) {
+      term.kill();
+    });
     terminals[fd] = term;
     term.on('data', function(chunk) {
       remote.onData(fd, chunk);
