@@ -1,3 +1,5 @@
+var playground = __dirname + "/playground";
+
 module.exports = [
   {
     packagePath: "./plugins/http.js",
@@ -22,9 +24,9 @@ module.exports = [
       name: "xterm-color",
       cols: 80,
       rows: 30,
-      cwd: "/try.luvit.io",
+      cwd: playground,
       env: {
-        HOME: "/try.luvit.io",
+        HOME: playground,
         TERM: "xterm-color"
       }
     }

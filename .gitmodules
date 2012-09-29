@@ -1,0 +1,30 @@
+[submodule "playground/continuable"]
+	path = playground/modules/continuable
+	url = https://github.com/luvit/continuable.git
+[submodule "playground/web"]
+	path = playground/modules/web
+	url = https://github.com/luvit/web.git
+[submodule "playground/web-autoheaders"]
+	path = playground/modules/web-autoheaders
+	url = https://github.com/luvit/web-autoheaders.git
+[submodule "playground/web-log"]
+	path = playground/modules/web-log
+	url = https://github.com/luvit/web-log.git
+[submodule "playground/web-static"]
+	path = playground/modules/web-static
+	url = https://github.com/luvit/web-static.git
+[submodule "playground/modules/continuable"]
+	path = playground/modules/continuable
+	url = https://github.com/luvit/continuable.git
+[submodule "playground/modules/web"]
+	path = playground/modules/web
+	url = https://github.com/luvit/web.git
+[submodule "playground/modules/web-static"]
+	path = playground/modules/web-static
+	url = https://github.com/luvit/web-static.git
+[submodule "playground/modules/web-autoheaders"]
+	path = playground/modules/web-autoheaders
+	url = https://github.com/luvit/web-autoheaders.git
+[submodule "playground/modules/web-log"]
+	path = playground/modules/web-log
+	url = https://github.com/luvit/web-log.git
