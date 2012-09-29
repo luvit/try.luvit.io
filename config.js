@@ -10,7 +10,7 @@ module.exports = [
   },
   {
     packagePath: "./plugins/smith.js",
-    debug: process.env.DEBUG_SMIT,
+    debug: process.env.DEBUG,
     url: "/smith"
   },
   {
