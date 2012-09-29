@@ -6,7 +6,9 @@ It serves a simple rpc API over binary websockets using msgpack encoded smith me
 
 The rpc API spawns pty sessions on my VPS box running in somewhat sandboxed luvit repls.
 
-<http://luvit.io:1337/>
+To play with the repl, simple go [here](http://luvit.io:1337/).
+
+If you want to watch the decoded msgpack messages, append `?debug` to the url and open web inspector's console.
 
 [architect]: https://github.com/c9/architect
 [smith]: https://github.com/c9/smith
