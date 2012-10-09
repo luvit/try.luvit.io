@@ -9,7 +9,7 @@ define(["smith", "events"], function (smith, events) {
   function setup(config, imports, register) {
     var service = new EventEmitter();
 
-    var url = document.location.origin.replace(/^http/, "ws") + config.url;
+    var url = document.location.protocol.replace(/^http/, "ws") + "//" + document.location.host + config.url;
     var socket = new WebSocket(url);
 
     socket.onopen = function () {
